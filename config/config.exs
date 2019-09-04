@@ -15,7 +15,10 @@ config :protocol_builder, ProtocolBuilderWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "FgHxN2UQ34GxYgsmYsXSmV9nDA7MavjX8DrUxRZ2Jr7PDqHks3heB/ushHJSt5Qq",
   render_errors: [view: ProtocolBuilderWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ProtocolBuilder.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: ProtocolBuilder.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "RfYxnif0klxmuIBkkCTGhdilGnCGvUhn"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
