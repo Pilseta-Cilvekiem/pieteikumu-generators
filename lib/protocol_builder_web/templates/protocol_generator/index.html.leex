@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <form phx-change="rerender">
+        <section class="border p-3 mb-3">
+          <h1>Iesnieguma informācija</h1>
+          <div class="form-group">
+            <label for="protocol_date">Iesnieguma datums</label>
+            <input type="text" class="form-control" name="protocol_date" id="protocol_date" placeholder="<%= default_value(:protocol_date) %>" value="<%= @protocol_date %>" />
+          </div>
+        </section>
+
+        <section class="border p-3 mb-3">
+          <h1>Personīgā informācija</h1>
+          <div class="form-group">
+            <label for="person_name">Vārds/Uzvārds</label>
+            <input type="text" class="form-control" name="person_name" id="person_name" placeholder="<%= default_value(:person_name) %>" value="<%= @person_name %>" />
+          </div>
+          <div class="form-group">
+            <label for="person_code">Personas kods</label>
+            <input type="text" class="form-control" name="person_code" id="person_code" placeholder="<%= default_value(:person_code) %>" value="<%= @person_code %>" />
+          </div>
+          <div class="form-group">
+            <label for="person_address">Adrese</label>
+            <input type="text" class="form-control" name="person_address" id="person_address" placeholder="<%= default_value(:person_address) %>" value="<%= @person_address %>" />
+          </div>
+          <div class="form-group">
+            <label for="person_phone">Tālrunis</label>
+            <input type="text" class="form-control" name="person_phone" id="person_phone" placeholder="<%= default_value(:person_phone) %>" value="<%= @person_phone %>" />
+          </div>
+        </section>
+        <section class="border p-3">
+          <h1>Pārkāpuma informācija</h1>
+          <div class="form-group">
+            <label for="infringement_date">Pārkāpuma datums</label>
+            <input type="text" class="form-control" name="infringement_date" id="infringement_date" placeholder="<%= default_value(:infringement_date) %>" value="<%= @infringement_date %>" />
+          </div>
+          <div class="form-group">
+            <label for="infringement_time">Pārkāpuma laiks</label>
+            <input type="text" class="form-control" name="infringement_time" id="infringement_time" placeholder="<%= default_value(:infringement_time) %>" value="<%= @infringement_time %>" />
+          </div>
+          <div class="form-group">
+            <label for="infringement_address">Pārkāpuma adrese</label>
+            <input type="text" class="form-control" name="infringement_address" id="infringement_address" placeholder="<%= default_value(:infringement_address) %>" value="<%= @infringement_address %>" />
+          </div>
+          <div class="form-group">
+            <label for="infringement_car_mark">Pārkāpuma mašīnas marka</label>
+            <input type="text" class="form-control" name="infringement_car_mark" id="infringement_car_mark" placeholder="<%= default_value(:infringement_car_mark) %>" value="<%= @infringement_car_mark %>" />
+          </div>
+          <div class="form-group">
+            <label for="infringement_car_number">Pārkāpuma mašīnas numurus</label>
+            <input type="text" class="form-control" name="infringement_car_number" id="infringement_car_number" placeholder="<%= default_value(:infringement_car_number) %>" value="<%= @infringement_car_number %>" />
+          </div>
+        </section>
+      </form>
+    </div>
+    <div class="col-md-8">
+      <div class="shadow p-3 mb-5 bg-white rounded">
+        <%= render(@protocol, assigns) %>
+      </div>
+    </div>
+  </div>
+</div>
