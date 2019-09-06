@@ -17,7 +17,7 @@ defmodule ProtocolBuilderWeb.Router do
   scope "/", ProtocolBuilderWeb do
     pipe_through :browser
 
-    live "/", ProtocolGeneratorLive
+    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.

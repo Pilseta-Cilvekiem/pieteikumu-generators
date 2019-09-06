@@ -8,7 +8,12 @@
 use Mix.Config
 
 config :protocol_builder,
-  ecto_repos: [ProtocolBuilder.Repo]
+  ecto_repos: [ProtocolBuilder.Repo],
+  basic_auth: [
+    username: "pilseta",
+    password: "cilvekiem",
+    realm: "Testersonss"
+  ]
 
 # Configures the endpoint
 config :protocol_builder, ProtocolBuilderWeb.Endpoint,
