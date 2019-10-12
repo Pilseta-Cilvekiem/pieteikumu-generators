@@ -2,9 +2,10 @@ version: '3'
 
 services:
   api:
-    image: elixir:1.9.1
-    command: mix deps.get && mix phx.server
+    image: elixir:1.9.1-alpine
+    command: /app/run.sh
     volumes:
       - .:/app
     ports:
-      - "80:4000"
+      - 4000:4000
+    restart: unless-stopped
