@@ -3,8 +3,8 @@ version: '3'
 services:
   api:
     image: elixir:1.9.1
-    command: mix phx.server
+    command: mix deps.get && mix phx.server
     volumes:
       - .:/app
     ports:
-      - "4000:4000"
+      - "80:4000"
