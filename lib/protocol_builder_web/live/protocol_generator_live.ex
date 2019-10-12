@@ -7,9 +7,8 @@ defmodule ProtocolBuilderWeb.ProtocolGeneratorLive do
   def mount(_, socket) do
     now = Timex.now("Europe/Riga")
 
-    {:ok, date} = Timex.format(now, "%Y gada %d. %B", :strftime)
+    {:ok, date} = Timex.format(now, "%Y-%m-%d", :strftime)
     {:ok, time} = Timex.format(now, "%H:%M", :strftime)
-    date = prepare_month(date)
 
     start_values = %{
       "infringement_date" => date,
@@ -38,21 +37,5 @@ defmodule ProtocolBuilderWeb.ProtocolGeneratorLive do
     |> assign(:infringement_car_number, Map.get(values, "infringement_car_number", ""))
     |> assign(:protocol_date, Map.get(values, "protocol_date", ""))
     |> assign(:protocol_type, Map.get(values, "protocol_type", ""))
-  end
-
-  defp prepare_month(date) do
-    date
-    |> String.replace("April", "Aprīlī")
-    |> String.replace("August", "Augustā")
-    |> String.replace("December", "Decembrī")
-    |> String.replace("February", "Februārī")
-    |> String.replace("January", "Janvārī")
-    |> String.replace("July", "Jūlijā")
-    |> String.replace("June", "Jūnijā")
-    |> String.replace("March", "Martā")
-    |> String.replace("May", "Maijā")
-    |> String.replace("November", "Novembrī")
-    |> String.replace("October", "Oktobrī")
-    |> String.replace("September", "Septembrī")
   end
 end
