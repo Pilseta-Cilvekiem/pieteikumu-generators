@@ -4,6 +4,17 @@
       <section class="border pt-3 pr-3 pl-3 mb-3">
         <h4>Iesnieguma informācija</h4>
         <div class="form-group">
+          <label for="protocol_type">Iesnieguma tips</label>
+          <select name="protocol_type" id="protocol_type" class="form-control">
+            <%= for {type, label} <- protocol_types() do %>
+              <option 
+                value="<%= type %>"
+                <%= if type == @protocol_type, do: "selected" %>
+              ><%= label %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="protocol_date">Iesnieguma datums</label>
           <input type="text" class="form-control" name="protocol_date" id="protocol_date" placeholder="<%= default_value(:protocol_date) %>" value="<%= @protocol_date %>" />
         </div>
@@ -43,10 +54,6 @@
           <input type="text" class="form-control" name="infringement_address" id="infringement_address" placeholder="<%= default_value(:infringement_address) %>" value="<%= @infringement_address %>" />
         </div>
         <div class="form-group">
-          <label for="infringement_car_mark">Pārkāpuma mašīnas marka</label>
-          <input type="text" class="form-control" name="infringement_car_mark" id="infringement_car_mark" placeholder="<%= default_value(:infringement_car_mark) %>" value="<%= @infringement_car_mark %>" />
-        </div>
-        <div class="form-group">
           <label for="infringement_car_number">Pārkāpuma mašīnas numurus</label>
           <input type="text" class="form-control" name="infringement_car_number" id="infringement_car_number" placeholder="<%= default_value(:infringement_car_number) %>" value="<%= @infringement_car_number %>" />
         </div>
@@ -55,7 +62,7 @@
   </div>
   <div class="col-md-8">
     <div class="shadow p-3 mb-5 bg-white rounded">
-      <%= render(@protocol, assigns) %>
+      <%= render("#{@protocol_type}.html", assigns) %>
     </div>
   </div>
 </div>

@@ -14,15 +14,11 @@ defmodule ProtocolBuilderWeb.ProtocolGeneratorLive do
     start_values = %{
       "infringement_date" => date,
       "infringement_time" => time,
-      "protocol_date" => date
+      "protocol_date" => date,
+      "protocol_type" => "car-on-sidewalk"
     }
 
-    socket =
-      socket
-      |> assign(:protocol, "unauthorized-parking.html")
-      |> assign_values(start_values)
-
-    {:ok, socket}
+    {:ok, assign_values(socket, start_values)}
   end
 
   def handle_event("rerender", input, socket) do
@@ -41,6 +37,7 @@ defmodule ProtocolBuilderWeb.ProtocolGeneratorLive do
     |> assign(:infringement_car_mark, Map.get(values, "infringement_car_mark", ""))
     |> assign(:infringement_car_number, Map.get(values, "infringement_car_number", ""))
     |> assign(:protocol_date, Map.get(values, "protocol_date", ""))
+    |> assign(:protocol_type, Map.get(values, "protocol_type", ""))
   end
 
   defp prepare_month(date) do
