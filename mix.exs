@@ -43,9 +43,10 @@ defmodule ProtocolBuilder.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.1.0"},
+      {:phoenix_live_view, "~> 0.3.1"},
       {:timex, "~> 3.6.1"},
-      {:basic_auth, "~> 2.2.2"}
+      {:basic_auth, "~> 2.2.2"},
+      {:acmex, github: "sergioaugrod/acmex"}
     ]
   end
 

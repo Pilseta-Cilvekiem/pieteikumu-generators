@@ -13,7 +13,21 @@ config :protocol_builder,
     username: "pilseta",
     password: "cilvekiem",
     realm: "Testersonss"
-  ]
+  ],
+  acme_challenge: System.get_env("ACME_CHALLENGES")
+
+config :acmex,
+  directory_url: "https://acme-staging-v02.api.letsencrypt.org/directory",
+  account_key_path:
+    [File.cwd!(), "./priv/acmex/account.key"]
+    |> Path.join()
+    |> Path.expand(),
+  account_email: "rgulans@gmail.com",
+  domains: ["example.com"],
+  certificate_path:
+    [File.cwd!(), "./priv/acmex/certificate.key"]
+    |> Path.join()
+    |> Path.expand()
 
 # Configures the endpoint
 config :protocol_builder, ProtocolBuilderWeb.Endpoint,

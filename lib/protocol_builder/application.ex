@@ -11,7 +11,8 @@ defmodule ProtocolBuilder.Application do
       # Start the Ecto repository
       # ProtocolBuilder.Repo,
       # Start the endpoint when the application starts
-      ProtocolBuilderWeb.Endpoint
+      ProtocolBuilderWeb.Endpoint,
+      {Acmex, [Application.get_env(:acmex, :account_key_path)]}
       # Starts a worker by calling: ProtocolBuilder.Worker.start_link(arg)
       # {ProtocolBuilder.Worker, arg},
     ]

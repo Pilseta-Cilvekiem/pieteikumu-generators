@@ -18,6 +18,7 @@ defmodule ProtocolBuilderWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/.well-known/acme-challenge/:token", PageController, :acme_challenge
   end
 
   # Other scopes may use custom stacks.
