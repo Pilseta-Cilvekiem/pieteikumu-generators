@@ -3,7 +3,11 @@ defmodule ProtocolBuilderWeb.PageController do
 
   alias ProtocolBuilderWeb.ProtocolGeneratorLive
 
-  plug BasicAuth, use_config: {:protocol_builder, :basic_auth}
+  @options Application.fetch_env!(:protocol_builder, :basic_auth)
+
+  if(@options[:username] != "" && @options[:password] != "") do
+    plug BasicAuth, use_config: {:protocol_builder, :basic_auth}
+  end
 
   def index(conn, _params) do
     live_render(conn, ProtocolGeneratorLive, session: %{})

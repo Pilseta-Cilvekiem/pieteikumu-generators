@@ -2,7 +2,6 @@
 
 cd /app
 
-# install git
 apk update
 apk upgrade
 apk add --no-cache bash git openssh nodejs npm

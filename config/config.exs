@@ -10,9 +10,9 @@ use Mix.Config
 config :protocol_builder,
   ecto_repos: [ProtocolBuilder.Repo],
   basic_auth: [
-    username: "pilseta",
-    password: "cilvekiem",
-    realm: "Testersonss"
+    username: System.get_env("BASIC_AUTH_USERNAME"),
+    password: System.get_env("BASIC_AUTH_PASSWORD"),
+    realm: System.get_env("BASIC_AUTH_REALM")
   ],
   acme_challenge: System.get_env("ACME_CHALLENGES")
 
