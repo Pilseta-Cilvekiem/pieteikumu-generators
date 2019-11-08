@@ -30,7 +30,7 @@ defmodule ProtocolBuilderWeb.ProtocolGeneratorView do
   defp prepare_value(date, type) when type in [:infringement_date, :protocol_date] do
     date
     |> Timex.parse!("%Y-%m-%d", :strftime)
-    |> Timex.format!("%Y gada %d. %B", :strftime)
+    |> Timex.format!("%Y. gada %d. %B", :strftime)
     |> String.replace("April", "Aprīlī")
     |> String.replace("August", "Augustā")
     |> String.replace("December", "Decembrī")
