@@ -67,12 +67,10 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/api-deployment.yaml
-                $(Pipeline.Workspace)/manifests/api-env-configmap.yaml
-                $(Pipeline.Workspace)/manifests/api-service.yaml
+                $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/ingress.yml
-                $(Pipeline.Workspace)/manifests/persistent-volume-claim.yml
                 $(Pipeline.Workspace)/manifests/role-binding.yml
+                $(Pipeline.Workspace)/manifests/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |

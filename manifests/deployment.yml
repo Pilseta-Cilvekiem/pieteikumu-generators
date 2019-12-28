@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: iesniegumi.pilsetacilvekiem.lv
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    spec:
+      containers:
+      - env:
+        - name: BASIC_AUTH_PASSWORD
+          value: ""
+        - name: BASIC_AUTH_REALM
+          value: ""
+        - name: BASIC_AUTH_USERNAME
+          value: ""
+        image: iesniegumipilsetacilvekiemlv.azurecr.io/iesniegumugenerators
+        name: api
+        ports:
+        - containerPort: 4000
+      restartPolicy: Always
