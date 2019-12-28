@@ -1,11 +1,11 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  labels:
-    app: api
   name: iesniegumi.pilsetacilvekiem.lv
 spec:
-  replicas: 1
+  selector:
+    matchLabels:
+      app: api
   strategy:
     type: RollingUpdate
   template:
@@ -25,4 +25,4 @@ spec:
         name: api
         ports:
         - containerPort: 4000
-      restartPolicy: Always
+  replicas: 1
