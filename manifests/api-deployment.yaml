@@ -23,9 +23,7 @@ spec:
         io.kompose.service: api
     spec:
       containers:
-      - args:
-        - /app/run.sh
-        env:
+      - env:
         - name: BASIC_AUTH_PASSWORD
           valueFrom:
             configMapKeyRef:
@@ -41,7 +39,7 @@ spec:
             configMapKeyRef:
               key: BASIC_AUTH_USERNAME
               name: api-env
-        image: elixir:1.9.1-alpine
+        image: iesniegumipilsetacilvekiemlv.azurecr.io/iesniegumugenerators
         name: api
         ports:
         - containerPort: 4000
