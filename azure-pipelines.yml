@@ -8,44 +8,12 @@ resources:
 - repo: self
 
 variables:
-
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'f3d75458-4617-466a-936c-bd46f8af59ec'
-  imageRepository: 'iesniegumugenerators'
-  containerRegistry: 'iesniegumipilsetacilvekiemlv.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
-  tag: '$(Build.BuildId)'
-  imagePullSecret: 'image-pull-secret'
-
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
-  
 
 stages:
-- stage: Build
-  displayName: Build stage
-  jobs:  
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: $(vmImageName)
-    steps:
-    - task: Docker@2
-      displayName: Build and push an image to container registry
-      inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
-          
-    - upload: manifests
-      artifact: manifests
-
 - stage: Deploy
   displayName: Deploy stage
-  dependsOn: Build
 
   jobs:
   - deployment: Deploy
@@ -58,13 +26,6 @@ stages:
         deploy:
           steps:
           - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              
-          - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
@@ -72,7 +33,5 @@ stages:
                 $(Pipeline.Workspace)/manifests/api-deployment.yml
                 $(Pipeline.Workspace)/manifests/api-env-configmap.yaml
                 $(Pipeline.Workspace)/manifests/api-service.yml
-              imagePullSecrets: |
-                $(imagePullSecret)
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
+                $(Pipeline.Workspace)/manifests/ingress.yml
+                $(Pipeline.Workspace)/manifests/role-binding.yml
