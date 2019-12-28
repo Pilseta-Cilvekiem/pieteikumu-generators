@@ -6,7 +6,8 @@ metadata:
   name: iesniegumi.pilsetacilvekiem.lv
 spec:
   replicas: 1
-  strategy: RollingUpdate
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
