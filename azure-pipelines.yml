@@ -30,8 +30,8 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/api-deployment.yml
+                $(Pipeline.Workspace)/manifests/api-deployment.yaml
                 $(Pipeline.Workspace)/manifests/api-env-configmap.yaml
-                $(Pipeline.Workspace)/manifests/api-service.yml
+                $(Pipeline.Workspace)/manifests/api-service.yaml
                 $(Pipeline.Workspace)/manifests/ingress.yml
                 $(Pipeline.Workspace)/manifests/role-binding.yml
