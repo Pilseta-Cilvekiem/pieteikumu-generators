@@ -9,7 +9,8 @@ COPY priv priv
 
 COPY mix.* ./
 
-# RUN apk add --no-cache bash git openssh nodejs npm
+RUN apk add --no-cache npm
+#bash git openssh nodejs npm
 
 RUN mix local.hex --force
 RUN mix local.rebar --force
