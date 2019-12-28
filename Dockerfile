@@ -19,4 +19,4 @@ RUN cd assets && npm install
 
 # RUN mix test
 
-ENTRYPOINT mix phx.server
+RUN mix phx.server
