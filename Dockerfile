@@ -1,5 +1,7 @@
 FROM elixir:1.9.1-alpine
 
+ENV MIX_ENV prod
+
 WORKDIR /app
 
 COPY assets assets
