@@ -19,4 +19,4 @@ RUN mix deps.get
 RUN mix deps.compile
 RUN mix compile
 
-ENTRYPOINT mix do ecto.migrate, phx.server
+ENTRYPOINT mix phx.server
