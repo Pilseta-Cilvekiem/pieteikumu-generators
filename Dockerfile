@@ -10,7 +10,7 @@ COPY lib lib
 COPY priv priv
 COPY test test
 
-COPY mix.* .
+COPY mix.* ./
 
 RUN apk add --no-cache bash git openssh nodejs npm
 
