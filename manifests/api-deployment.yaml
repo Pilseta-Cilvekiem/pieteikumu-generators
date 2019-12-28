@@ -44,12 +44,5 @@ spec:
         ports:
         - containerPort: 4000
         resources: {}
-        volumeMounts:
-        - mountPath: /app
-          name: app
       restartPolicy: Always
-      volumes:
-      - name: app
-        persistentVolumeClaim:
-          claimName: iesniegumi.pilsetacilvekiem.lv
 status: {}
