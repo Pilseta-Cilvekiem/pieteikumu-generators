@@ -2,8 +2,7 @@
 # Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-trigger:
-- master
+trigger: none
 
 resources:
 - repo: self
@@ -16,7 +15,7 @@ variables:
   containerRegistry: 'iesniegumipilsetacilvekiemlv.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'iesniegumipilsetacilvekiemlv18595d9d-auth'
+  imagePullSecret: 'image-pull-secret'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -53,7 +52,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'PilsetaCilvekiemiesniegumipilsetacilvekiemlv-5608.iesniegumi-pilsetacilvekiem-lv'
+    environment: 'Production.iesniegumi-pilsetacilvekiem-lv'
     strategy:
       runOnce:
         deploy:
@@ -70,10 +69,10 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
+                $(Pipeline.Workspace)/manifests/api-deployment.yml
+                $(Pipeline.Workspace)/manifests/api-env-configmap.yaml
+                $(Pipeline.Workspace)/manifests/api-service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
-
