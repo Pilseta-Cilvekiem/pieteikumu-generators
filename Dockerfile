@@ -2,6 +2,9 @@ FROM elixir:1.9.1-alpine
 
 WORKDIR /app
 
+COPY assets .
+COPY mix.exs .
+
 RUN apk add --no-cache bash git openssh nodejs npm
 
 RUN mix local.hex --force
