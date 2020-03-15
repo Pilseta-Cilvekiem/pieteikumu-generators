@@ -6,8 +6,6 @@ COPY config config
 COPY lib lib
 COPY priv priv
 COPY mix.* ./
-COPY .env .env
-RUN export $(egrep -v '^#' .env | xargs)
 RUN mix local.hex --force
 RUN mix local.rebar --force
 RUN mix deps.get
