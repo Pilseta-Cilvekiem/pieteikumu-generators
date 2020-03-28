@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: iesniegumi.pilsetacilvekiem.lv
@@ -14,15 +14,8 @@ spec:
         app: api
     spec:
       containers:
-      - env:
-        - name: BASIC_AUTH_PASSWORD
-          value: ""
-        - name: BASIC_AUTH_REALM
-          value: ""
-        - name: BASIC_AUTH_USERNAME
-          value: ""
-        image: iesniegumipilsetacilvekiemlv.azurecr.io/iesniegumugenerators
-        name: api
-        ports:
-        - containerPort: 4000
+        - image: iesniegumipilsetacilvekiemlv.azurecr.io/iesniegumugenerators
+          name: api
+          ports:
+            - containerPort: 4000
   replicas: 1
